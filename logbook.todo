@@ -11,7 +11,9 @@ Users:
     List all user:
         ✔ Create tests @done(23-01-06 12:44)
         ✔ Create repository and use case @done(23-01-06 13:12)
-    
+    Filter user by ID:
+        ✔ Create tests @started(23-01-06 15:01) @done(23-01-06 15:25) @lasted(24m59s)
+        ✔ Create repository and use case of filter USER @started(23-01-06 15:26) @done(23-01-06 15:26) @lasted(16s)
 Tasks:
     ☐ Create a new Task
 
