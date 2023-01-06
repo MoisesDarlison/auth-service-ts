@@ -11,4 +11,8 @@ export class UserInMemoryRepository implements UserRepositoryInterface {
   async getAll(): Promise<User[]> {
     return this.items;
   }
+
+  async filterById(id: string): Promise<User | null> {
+    return this.items.find((item) => item.id === id) || null;
+  }
 }
