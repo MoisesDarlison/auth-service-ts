@@ -1,7 +1,7 @@
-import { userOutput } from "../../../app/use-cases/user/create-user.use-case";
+import { User } from "../../../domain/entities/User.entity";
 
 export class UserViewModelMapper {
-  static toHTTP({ user }: userOutput) {
+  static toHTTP(user: User) {
     return {
       id: user.id,
       email: user.email,
@@ -11,17 +11,4 @@ export class UserViewModelMapper {
       updatedAt: user.updatedAt,
     };
   }
-
-  // static toDomain(raw: UserProps, id: string): User {
-  //   return new User(
-  //     {
-  //       email: raw.email,
-  //       password: raw.password,
-  //       nickName: raw.nickName,
-  //       updatedAt: raw.updatedAt,
-  //       permissionLevel: raw.permissionLevel,
-  //     },
-  //     id
-  //   );
-  // }
 }

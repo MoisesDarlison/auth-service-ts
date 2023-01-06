@@ -2,8 +2,13 @@ import { UserRepositoryInterface } from "../../../domain/repositories/user.repos
 import { User } from "../../../domain/entities/User.entity";
 
 export class UserInMemoryRepository implements UserRepositoryInterface {
-  items: User[] = [];
+  public items: User[] = [];
+
   async create(user: User): Promise<void> {
     this.items.push(user);
+  }
+
+  async getAll(): Promise<User[]> {
+    return this.items;
   }
 }

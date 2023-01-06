@@ -6,6 +6,7 @@ export class InMemoryUserMapper {
       id: user.id,
       email: user.email,
       nickName: user.nickName,
+      password: user.password,
       permissionLevel: user.permissionLevel,
       createdAt: user.createdAt,
       updatedAt: user.updatedAt,
