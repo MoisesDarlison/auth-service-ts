@@ -1,0 +1,17 @@
+                            
+                            ### Projeto de casos de uso con testes ###
+## OBS iniciado o TODO-LIST ja apos o inicio do projeto por isso alguns horarios estaram fora de ordem
+
+Users:
+    Create a new User:
+        ✔ Create repository and use case @done(23-01-06 12:47)
+            ✘ Change layout that is being saved in the database @started(23-01-06 12:17) @cancelled(23-01-06 12:38) @wasted(21m51s)
+            ✔ It has been validated that it is saving correctly in memory @done(23-01-06 12:45)
+        ✔ Create tests @done(23-01-06 12:47)
+    List all user:
+        ✔ Create tests @done(23-01-06 12:44)
+        ✔ Create repository and use case @done(23-01-06 13:12)
+    
+Tasks:
+    ☐ Create a new Task
+

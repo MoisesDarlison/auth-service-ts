@@ -14,13 +14,6 @@ describe("Create User - Use Case", () => {
     });
 
     expect(userRepoInMemory.items).toHaveLength(1);
-    expect(output.user.email).toBe("test@email.com");
-    // expect(output).toStrictEqual({
-    //   id: repository.items[0].id,
-    //   : 'my title',
-    //   startPosition: { lat: 1, lng: 2 },
-    //   endPosition: { lat: 3, lng: 4 },
-    //   points: [],
-    // });
+    expect(output.email).toBe("test@email.com");
   });
 });

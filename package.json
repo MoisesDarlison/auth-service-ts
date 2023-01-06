@@ -6,7 +6,7 @@
   "scripts": {
     "test": "jest",
     "start": "node src/core/infra/http/server.ts",
-    "start:dev": "ts-node src/core/infra/http/server.ts --watch"
+    "start:dev": "nodemon src/core/infra/http/server.ts"
   },
   "keywords": [],
   "author": "",
