@@ -21,7 +21,17 @@ Tasks:
     Create a new Task:
         ✔ Create tests @started(23-01-09 11:50) @done(23-01-09 13:48) @lasted(1h58m47s)
         ✔ Create repository and use case @done(23-01-09 13:48)
-    List all tasks by UserID:
+    List all tasks by authorId:
         ✔ Create tests @done(23-01-09 14:46)
         ✔ Create repository and use case @done(23-01-09 14:46)
+    List ONE tasks by authorId:
+        ✔ Create tests @started(23-01-09 15:06) @done(23-01-09 15:38) @lasted(32m3s)
+        ✔ Create repository and use case @done(23-01-09 15:38)
+    Change status Tasks:
+        ✔ Send to finished task @done(23-01-09 15:55)
+        ✔ Revert finished task @done(23-01-09 16:24)
+    Chenge data Tasks:
+        ✔ Add new tag @started(23-01-09 16:24) @done(23-01-09 17:14) @lasted(50m35s)
+        ✔ Remove tag @done(23-01-09 17:14)
+        ✔ Update Title and description @started(23-01-09 17:44) @done(23-01-09 18:20) @lasted(36m2s)
 
