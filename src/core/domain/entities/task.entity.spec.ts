@@ -19,9 +19,12 @@ describe("Task Entity", () => {
     expect(output).toBeTruthy();
     expect(output.title).toBe("title test");
     expect(output.description).toBe("abcde 123456");
+    expect(output.id).not.toBeNull();
     expect(output.authorId).toBe(user.id);
     expect(output.createdAt).not.toBeNull();
     expect(output.updatedAt).toBeNull();
+    expect(output.finishedAt).toBeNull();
+
     expect(output.tag).toHaveLength(0);
 
     output.appendTag("test");
