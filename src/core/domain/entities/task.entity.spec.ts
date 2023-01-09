@@ -27,9 +27,9 @@ describe("Task Entity", () => {
 
     expect(output.tag).toHaveLength(0);
 
-    output.appendTag("test");
+    output.appendTag(["test"]);
     expect(output.tag).toHaveLength(1);
-    output.appendTag("test 2");
+    output.appendTag(["test 2"]);
     expect(output.tag).toHaveLength(2);
   });
 });
