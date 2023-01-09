@@ -7,7 +7,7 @@ export class TaskViewModelMapper {
       authorId: task.authorId,
       title: task.title,
       description: task.description,
-      tag: task.tag,
+      tags: task.tags,
       createdAt: task.createdAt,
       updatedAt: task.updatedAt,
       finishedAt: task.finishedAt,

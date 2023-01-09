@@ -4,7 +4,7 @@ export interface TaskProps {
   authorId: string;
   title: string;
   description: string;
-  tag?: string[];
+  tags?: string[];
   createdAt?: Date;
   updatedAt?: Date | null;
   finishedAt?: Date | null;
@@ -17,7 +17,7 @@ export class Task {
     this._id = id || randomUUID();
     this.props = {
       ...props,
-      tag: props.tag || [],
+      tags: props.tags || [],
       createdAt: new Date(),
       updatedAt: props.updatedAt || null,
       finishedAt: props.finishedAt || null,
@@ -52,22 +52,22 @@ export class Task {
   //   this.props.description = value;
   // }
 
-  public get tag(): string[] {
-    return this.props.tag;
+  public get tags(): string[] {
+    return this.props.tags;
   }
 
-  private set tag(value: string[]) {
-    this.props.tag = value;
+  private set tags(value: string[]) {
+    this.props.tags = value;
   }
 
   public appendTag(value: string[]) {
     this.updatedAt = new Date();
-    this.tag = [...new Set([...this.tag, ...value])];
+    this.tags = [...new Set([...this.tags, ...value])];
   }
 
   public removeTag(value: string[]) {
     this.updatedAt = new Date();
-    this.tag = this.tag.filter((item) => !value.includes(item));
+    this.tags = this.tags.filter((item) => !value.includes(item));
   }
 
   public get createdAt(): Date {

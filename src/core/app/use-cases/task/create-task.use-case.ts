@@ -4,20 +4,20 @@ import { TaskRepositoryInterface } from "../../../domain/repositories/task.repos
 type taskInput = {
   title: string;
   description: string;
-  tag?: string[];
+  tags?: string[];
 };
 
 export class CreateTaskUserCase {
   constructor(private readonly repository: TaskRepositoryInterface) {}
 
   async execute(authorId: string, request: taskInput): Promise<Task> {
-    const { title, description, tag = [] } = request;
+    const { title, description, tags = [] } = request;
 
     const task = new Task({
       authorId,
       title,
       description,
-      tag,
+      tags,
     });
 
     await this.repository.create(task);

@@ -7,13 +7,13 @@ export class AppendTagOnTaskByUserIdUserCase {
   async execute(
     authorId: string,
     id: string,
-    tag: string[]
+    tags: string[]
   ): Promise<Task | null> {
     const task = await this.repository.filterById(authorId, id);
 
     if (!task) return null;
 
-    task.appendTag(tag);
+    task.appendTag(tags);
     await this.repository.save(task);
 
     return task;

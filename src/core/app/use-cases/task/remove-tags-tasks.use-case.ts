@@ -7,16 +7,13 @@ export class RemoveTagOnTaskByUserIdUserCase {
   async execute(
     authorId: string,
     id: string,
-    tag: string[]
+    tags: string[]
   ): Promise<Task | null> {
     const task = await this.repository.filterById(authorId, id);
 
     if (!task) return null;
 
-    task.removeTag(tag);
-
-    console.log(task);
-
+    task.removeTag(tags);
     await this.repository.save(task);
 
     return task;

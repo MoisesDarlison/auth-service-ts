@@ -99,7 +99,7 @@ export class TaskController {
     const UserUseCase = new FilterUserByIdUserCase(repositoryUser);
 
     const { authorId, id } = req.params;
-    const { tag } = req.body;
+    const { tags } = req.body;
     const userAlreadyExists = await UserUseCase.execute(authorId);
 
     if (!userAlreadyExists)
@@ -107,7 +107,7 @@ export class TaskController {
 
     const useCase = new AppendTagOnTaskByUserIdUserCase(repositoryTask);
 
-    const output = await useCase.execute(authorId, id, tag);
+    const output = await useCase.execute(authorId, id, tags);
     if (!output) return res.status(404).json({ message: "Task not found" });
 
     return res.status(200).json(TaskViewModelMapper.toHTTP(output));
@@ -117,7 +117,7 @@ export class TaskController {
     const UserUseCase = new FilterUserByIdUserCase(repositoryUser);
 
     const { authorId, id } = req.params;
-    const { tag } = req.body;
+    const { tags } = req.body;
     const userAlreadyExists = await UserUseCase.execute(authorId);
 
     if (!userAlreadyExists)
@@ -125,7 +125,7 @@ export class TaskController {
 
     const useCase = new RemoveTagOnTaskByUserIdUserCase(repositoryTask);
 
-    const output = await useCase.execute(authorId, id, tag);
+    const output = await useCase.execute(authorId, id, tags);
     if (!output) return res.status(404).json({ message: "Task not found" });
 
     return res.status(200).json(TaskViewModelMapper.toHTTP(output));
