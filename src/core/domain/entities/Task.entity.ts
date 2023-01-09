@@ -40,17 +40,23 @@ export class Task {
     return this.props.title;
   }
 
-  // private set title(value: string) {
-  //   this.props.title = value;
-  // }
+  public updateTitleAndDescriptions(title: string, description: string) {
+    this.title = title;
+    this.description = description;
+    this.updatedAt = new Date();
+  }
+
+  private set title(value: string) {
+    this.props.title = value;
+  }
 
   public get description(): string {
     return this.props.description;
   }
 
-  // private set description(value: string) {
-  //   this.props.description = value;
-  // }
+  private set description(value: string) {
+    this.props.description = value;
+  }
 
   public get tags(): string[] {
     return this.props.tags;

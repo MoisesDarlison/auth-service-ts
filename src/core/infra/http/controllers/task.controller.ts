@@ -6,6 +6,7 @@ import { FinishedTaskByUserIdUserCase } from "../../../app/use-cases/task/finish
 import { GetAllTasksByUserIdUserCase } from "../../../app/use-cases/task/get-all-tasks.use-case";
 import { RemoveTagOnTaskByUserIdUserCase } from "../../../app/use-cases/task/remove-tags-tasks.use-case";
 import { UnfinishedTaskByUserIdUserCase } from "../../../app/use-cases/task/unfinished-tasks.use-case";
+import { UpdateDescriptionAndTitleTaskByUserIdUserCase } from "../../../app/use-cases/task/update-description-and-title-tasks.use-case";
 import { FilterUserByIdUserCase } from "../../../app/use-cases/user/filter-user-by-id.use-case";
 import {
   repositoryTask,
@@ -126,6 +127,26 @@ export class TaskController {
     const useCase = new RemoveTagOnTaskByUserIdUserCase(repositoryTask);
 
     const output = await useCase.execute(authorId, id, tags);
+    if (!output) return res.status(404).json({ message: "Task not found" });
+
+    return res.status(200).json(TaskViewModelMapper.toHTTP(output));
+  }
+
+  async updateTitleAndDescription(req: Request, res: Response) {
+    const UserUseCase = new FilterUserByIdUserCase(repositoryUser);
+
+    const { authorId, id } = req.params;
+    const { title, description } = req.body;
+    const userAlreadyExists = await UserUseCase.execute(authorId);
+
+    if (!userAlreadyExists)
+      return res.status(400).json({ message: "User not found" });
+
+    const useCase = new UpdateDescriptionAndTitleTaskByUserIdUserCase(
+      repositoryTask
+    );
+
+    const output = await useCase.execute(authorId, id, { title, description });
     if (!output) return res.status(404).json({ message: "Task not found" });
 
     return res.status(200).json(TaskViewModelMapper.toHTTP(output));
