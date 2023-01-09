@@ -6,4 +6,8 @@ export class TaskInMemoryRepository implements TaskRepositoryInterface {
   async create(task: Task): Promise<void> {
     this.items.push(task);
   }
+
+  async getAll(authorId: string): Promise<Task[]> {
+    return this.items.filter((task) => task.authorId === authorId);
+  }
 }
