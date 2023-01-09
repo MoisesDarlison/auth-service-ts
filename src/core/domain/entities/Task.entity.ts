@@ -60,8 +60,14 @@ export class Task {
     this.props.tag = value;
   }
 
-  public appendTag(value: string) {
-    this.tag = [...this.tag, value];
+  public appendTag(value: string[]) {
+    this.updatedAt = new Date();
+    this.tag = [...new Set([...this.tag, ...value])];
+  }
+
+  public removeTag(value: string[]) {
+    this.updatedAt = new Date();
+    this.tag = this.tag.filter((item) => !value.includes(item));
   }
 
   public get createdAt(): Date {

@@ -1,8 +1,10 @@
 import { Request, Response } from "express";
+import { AppendTagOnTaskByUserIdUserCase } from "../../../app/use-cases/task/append-tags-tasks.use-case";
 import { CreateTaskUserCase } from "../../../app/use-cases/task/create-task.use-case";
 import { FilterTaskByUserIdUserCase } from "../../../app/use-cases/task/filter-tasks.use-case";
 import { FinishedTaskByUserIdUserCase } from "../../../app/use-cases/task/finished-tasks.use-case";
 import { GetAllTasksByUserIdUserCase } from "../../../app/use-cases/task/get-all-tasks.use-case";
+import { RemoveTagOnTaskByUserIdUserCase } from "../../../app/use-cases/task/remove-tags-tasks.use-case";
 import { UnfinishedTaskByUserIdUserCase } from "../../../app/use-cases/task/unfinished-tasks.use-case";
 import { FilterUserByIdUserCase } from "../../../app/use-cases/user/filter-user-by-id.use-case";
 import {
@@ -88,6 +90,42 @@ export class TaskController {
     const useCase = new UnfinishedTaskByUserIdUserCase(repositoryTask);
 
     const output = await useCase.execute(authorId, id);
+    if (!output) return res.status(404).json({ message: "Task not found" });
+
+    return res.status(200).json(TaskViewModelMapper.toHTTP(output));
+  }
+
+  async appendTags(req: Request, res: Response) {
+    const UserUseCase = new FilterUserByIdUserCase(repositoryUser);
+
+    const { authorId, id } = req.params;
+    const { tag } = req.body;
+    const userAlreadyExists = await UserUseCase.execute(authorId);
+
+    if (!userAlreadyExists)
+      return res.status(400).json({ message: "User not found" });
+
+    const useCase = new AppendTagOnTaskByUserIdUserCase(repositoryTask);
+
+    const output = await useCase.execute(authorId, id, tag);
+    if (!output) return res.status(404).json({ message: "Task not found" });
+
+    return res.status(200).json(TaskViewModelMapper.toHTTP(output));
+  }
+
+  async removeTags(req: Request, res: Response) {
+    const UserUseCase = new FilterUserByIdUserCase(repositoryUser);
+
+    const { authorId, id } = req.params;
+    const { tag } = req.body;
+    const userAlreadyExists = await UserUseCase.execute(authorId);
+
+    if (!userAlreadyExists)
+      return res.status(400).json({ message: "User not found" });
+
+    const useCase = new RemoveTagOnTaskByUserIdUserCase(repositoryTask);
+
+    const output = await useCase.execute(authorId, id, tag);
     if (!output) return res.status(404).json({ message: "Task not found" });
 
     return res.status(200).json(TaskViewModelMapper.toHTTP(output));
