@@ -22,6 +22,6 @@ Tasks:
         ✔ Create tests @started(23-01-09 11:50) @done(23-01-09 13:48) @lasted(1h58m47s)
         ✔ Create repository and use case @done(23-01-09 13:48)
     List all tasks by UserID:
-        ☐ Create tests
-        ☐ Create repository and use case
+        ✔ Create tests @done(23-01-09 14:46)
+        ✔ Create repository and use case @done(23-01-09 14:46)
 
