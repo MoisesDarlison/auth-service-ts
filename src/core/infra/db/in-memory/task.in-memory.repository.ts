@@ -18,4 +18,11 @@ export class TaskInMemoryRepository implements TaskRepositoryInterface {
 
     return tasksByAuthor.find((task) => task.id === id) || null;
   }
+
+  async save(task: Task): Promise<void> {
+    const taskIndex = this.items.findIndex((item) => item.id === task.id);
+    if (taskIndex >= 0) {
+      this.items[taskIndex] = task;
+    }
+  }
 }

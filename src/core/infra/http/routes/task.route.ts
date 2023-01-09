@@ -3,12 +3,13 @@ import { TaskController } from "../controllers/task.controller";
 
 const routerTask = Router();
 
-const { create, getAll, filterById } = new TaskController();
+const { create, getAll, filterById, finished, unfinished } =
+  new TaskController();
 
 routerTask.post("/:authorId", create);
 routerTask.get("/from/:authorId", getAll);
 routerTask.get("/from/:authorId/task/:id", filterById);
-// routerTask.get("/from/:id", getById);
-// routerTask.patch("/from/:id", updateNickNameById);
+routerTask.patch("/from/:authorId/task/finished/:id", finished);
+routerTask.patch("/from/:authorId/task/unfinished/:id", unfinished);
 
 export { routerTask };

@@ -72,15 +72,26 @@ export class Task {
     return this.props.updatedAt;
   }
 
-  // private set updatedAt(value: Date | null) {
-  //   this.props.updatedAt = value;
-  // }
+  private set updatedAt(value: Date | null) {
+    this.props.updatedAt = value;
+  }
 
   public get finishedAt(): Date | null {
     return this.props.finishedAt;
   }
 
-  // private set finishedAt(value: Date | null) {
-  //   this.props.finishedAt = value;
-  // }
+  private set finishedAt(value: Date | null) {
+    this.props.finishedAt = value;
+  }
+
+  public finishedTask() {
+    const now = new Date();
+    this.updatedAt = now;
+    this.finishedAt = now;
+  }
+
+  public unfinishedTask() {
+    this.updatedAt = new Date();
+    this.finishedAt = null;
+  }
 }
