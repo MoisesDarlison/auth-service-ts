@@ -24,6 +24,10 @@ export class Task {
     };
   }
 
+  public get id(): string {
+    return this._id;
+  }
+
   public get authorId(): string {
     return this.props.authorId;
   }
@@ -70,5 +74,13 @@ export class Task {
 
   // private set updatedAt(value: Date | null) {
   //   this.props.updatedAt = value;
+  // }
+
+  public get finishedAt(): Date | null {
+    return this.props.finishedAt;
+  }
+
+  // private set finishedAt(value: Date | null) {
+  //   this.props.finishedAt = value;
   // }
 }
