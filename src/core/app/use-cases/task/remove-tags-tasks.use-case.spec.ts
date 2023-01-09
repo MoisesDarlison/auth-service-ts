@@ -12,7 +12,7 @@ describe("Remove tag in Tasks - Use Case", () => {
         authorId: fakeAuthorId,
         title: "test 1",
         description: "description Test",
-        tag: ["tag1", "tag2", "tag3"],
+        tags: ["tag1", "tag2", "tag3"],
       })
     );
 
@@ -22,7 +22,7 @@ describe("Remove tag in Tasks - Use Case", () => {
       ["tag1", "tag2"]
     );
 
-    expect(output?.tag).toHaveLength(1);
+    expect(output?.tags).toHaveLength(1);
   });
 
   it("Should be able remove tag task by User", async () => {

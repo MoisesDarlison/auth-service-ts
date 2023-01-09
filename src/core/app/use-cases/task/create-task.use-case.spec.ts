@@ -14,14 +14,14 @@ describe("Create Task - Use Case", () => {
 
     expect(taskRepoInMemory.items).toHaveLength(1);
     expect(output.title).toBe("title Test");
-    expect(output.tag).toHaveLength(0);
+    expect(output.tags).toHaveLength(0);
 
     output = await taskUserCase.execute(authorId, {
       title: "title Test",
       description: "Description Test",
-      tag: ["test", "2"],
+      tags: ["test", "2"],
     });
 
-    expect(output.tag).toHaveLength(2);
+    expect(output.tags).toHaveLength(2);
   });
 });

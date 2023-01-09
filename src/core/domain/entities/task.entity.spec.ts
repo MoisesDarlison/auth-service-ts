@@ -25,11 +25,11 @@ describe("Task Entity", () => {
     expect(output.updatedAt).toBeNull();
     expect(output.finishedAt).toBeNull();
 
-    expect(output.tag).toHaveLength(0);
+    expect(output.tags).toHaveLength(0);
 
     output.appendTag(["test"]);
-    expect(output.tag).toHaveLength(1);
+    expect(output.tags).toHaveLength(1);
     output.appendTag(["test 2"]);
-    expect(output.tag).toHaveLength(2);
+    expect(output.tags).toHaveLength(2);
   });
 });

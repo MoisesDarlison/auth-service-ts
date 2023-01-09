@@ -21,7 +21,7 @@ describe("Append tag on Tasks - Use Case", () => {
       ["tag1", "tag2"]
     );
 
-    expect(output?.tag).toHaveLength(2);
+    expect(output?.tags).toHaveLength(2);
   });
 
   it("Should be able append tag task by User", async () => {
