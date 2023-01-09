@@ -43,6 +43,7 @@ export class User {
 
   //TODO: create validation in quantity characters
   public updateNickName(value: string) {
+    this.updatedAt = new Date();
     this.nickName = value;
   }
 
@@ -78,7 +79,7 @@ export class User {
     return this.props.updatedAt;
   }
 
-  // private set updatedAt(value: Date | null) {
-  //   this.props.updatedAt = value;
-  // }
+  private set updatedAt(value: Date | null) {
+    this.props.updatedAt = value;
+  }
 }

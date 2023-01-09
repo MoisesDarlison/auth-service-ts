@@ -15,4 +15,11 @@ export class UserInMemoryRepository implements UserRepositoryInterface {
   async filterById(id: string): Promise<User | null> {
     return this.items.find((item) => item.id === id) || null;
   }
+
+  async updateById(id: string, nickName: string): Promise<void> {
+    const notificationIndex = this.items.findIndex((item) => item.id === id);
+    if (notificationIndex >= 0) {
+      this.items[notificationIndex].updateNickName(nickName);
+    }
+  }
 }
