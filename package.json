@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "jest",
-    "start": "node src/core/infra/http/server.ts",
-    "start:dev": "nodemon src/core/infra/http/server.ts"
+    "start": "node src/infra/http/server.ts",
+    "start:dev": "nodemon src/infra/http/server.ts"
   },
   "keywords": [],
   "author": "",
