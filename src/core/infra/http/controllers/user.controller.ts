@@ -6,12 +6,13 @@ import { UpdateNickNameByIdUserCase } from "../../../app/use-cases/user/update-n
 import { UserViewModelMapper } from "../mapper/user.mapper";
 
 //TODO: Change to repo on PRD
-import { repositoryUser } from "../../db/in-memory/index.in-memory.repository";
-import { UserPasswordHash } from "../../../helpers/user-password-hash";
 import { FilterUserByEmailUserCase } from "../../../app/use-cases/user/filter-user-by-email.use-case";
+import { GenerateToken } from "../../../helpers/generate-token";
+import { UserPasswordHash } from "../../../helpers/user-password-hash";
+import { repositoryUser } from "../../db/in-memory/index.in-memory.repository";
 
 export class UserController {
-  async create(req: Request, res: Response) {
+  async signUp(req: Request, res: Response) {
     const userInput = {
       email: req.body.email,
       password: await UserPasswordHash.encryptPassthrough(req.body.password),
@@ -39,7 +40,15 @@ export class UserController {
 
     if (!isMatch) return res.status(400).json({ message: "User/Pass invalid" });
 
-    return res.status(200).json(UserViewModelMapper.toHTTP(output));
+    const token = GenerateToken.execute(
+      output.id,
+      output.email,
+      output.permissionLevel
+    );
+
+    return res
+      .status(200)
+      .json({ ...UserViewModelMapper.toHTTP(output), token });
   }
 
   async getAll(req: Request, res: Response) {
