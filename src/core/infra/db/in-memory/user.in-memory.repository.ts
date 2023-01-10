@@ -17,9 +17,21 @@ export class UserInMemoryRepository implements UserRepositoryInterface {
   }
 
   async updateById(id: string, nickName: string): Promise<void> {
-    const notificationIndex = this.items.findIndex((item) => item.id === id);
-    if (notificationIndex >= 0) {
-      this.items[notificationIndex].updateNickName(nickName);
+    const userIndex = this.items.findIndex((item) => item.id === id);
+    if (userIndex >= 0) {
+      this.items[userIndex].updateNickName(nickName);
     }
+  }
+
+  async findUserAndPassword(
+    email: string,
+    password: string
+  ): Promise<User | null> {
+    const userIndex = this.items.findIndex((item) => item.email === email);
+    if (userIndex >= 0) {
+      if (this.items[userIndex].password === password)
+        return this.items[userIndex];
+    }
+    return null;
   }
 }

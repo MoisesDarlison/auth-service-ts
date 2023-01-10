@@ -5,4 +5,5 @@ export interface UserRepositoryInterface {
   getAll(): Promise<User[]>;
   filterById(id: string): Promise<User | null>;
   updateById(id: string, nickName: string): Promise<void>;
+  findUserAndPassword(email: string, password: string): Promise<User | null>;
 }

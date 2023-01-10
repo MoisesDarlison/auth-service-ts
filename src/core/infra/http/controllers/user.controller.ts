@@ -7,6 +7,7 @@ import { UserViewModelMapper } from "../mapper/user.mapper";
 
 //TODO: Change to repo on PRD
 import { repositoryUser } from "../../db/in-memory/index.in-memory.repository";
+import { AuthenticateUserUseCase } from "../../../app/use-cases/user/authenticate-user.use-case";
 
 export class UserController {
   async create(req: Request, res: Response) {
@@ -14,6 +15,16 @@ export class UserController {
 
     const output = await useCase.execute(req.body);
     return res.status(201).json(UserViewModelMapper.toHTTP(output));
+  }
+
+  async signIn(req: Request, res: Response) {
+    const useCase = new AuthenticateUserUseCase(repositoryUser);
+    const { email, password } = req.body;
+    const output = await useCase.execute({ email, password });
+
+    if (!output) return res.status(400).json({ message: "User/Pass invalid" });
+
+    return res.status(200).json(UserViewModelMapper.toHTTP(output));
   }
 
   async getAll(req: Request, res: Response) {
