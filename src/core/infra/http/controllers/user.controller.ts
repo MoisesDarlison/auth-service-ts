@@ -8,7 +8,7 @@ import { UserViewModelMapper } from "../mapper/user.mapper";
 //TODO: Change to repo on PRD
 import { repositoryUser } from "../../db/in-memory/index.in-memory.repository";
 import { UserPasswordHash } from "../../../helpers/user-password-hash";
-import { FilterUserByEmailUserCase } from "../../../app/use-cases/user/filter-user-by-name.use-case";
+import { FilterUserByEmailUserCase } from "../../../app/use-cases/user/filter-user-by-email.use-case";
 
 export class UserController {
   async create(req: Request, res: Response) {
