@@ -7,22 +7,37 @@ import { UserViewModelMapper } from "../mapper/user.mapper";
 
 //TODO: Change to repo on PRD
 import { repositoryUser } from "../../db/in-memory/index.in-memory.repository";
-import { AuthenticateUserUseCase } from "../../../app/use-cases/user/authenticate-user.use-case";
+import { UserPasswordHash } from "../../../helpers/user-password-hash";
+import { FilterUserByEmailUserCase } from "../../../app/use-cases/user/filter-user-by-name.use-case";
 
 export class UserController {
   async create(req: Request, res: Response) {
-    const useCase = new CreateUserUserCase(repositoryUser);
+    const userInput = {
+      email: req.body.email,
+      password: await UserPasswordHash.encryptPassthrough(req.body.password),
+      permissionLevel: req.body.permissionLevel,
+    };
 
-    const output = await useCase.execute(req.body);
+    const useCase = new CreateUserUserCase(repositoryUser);
+    const output = await useCase.execute(userInput);
+
     return res.status(201).json(UserViewModelMapper.toHTTP(output));
   }
 
   async signIn(req: Request, res: Response) {
-    const useCase = new AuthenticateUserUseCase(repositoryUser);
     const { email, password } = req.body;
-    const output = await useCase.execute({ email, password });
+    const useCaseFindByEmail = new FilterUserByEmailUserCase(repositoryUser);
+
+    const output = await useCaseFindByEmail.execute(email);
 
     if (!output) return res.status(400).json({ message: "User/Pass invalid" });
+
+    const isMatch: boolean = UserPasswordHash.validatePassThrough(
+      password,
+      output.password
+    );
+
+    if (!isMatch) return res.status(400).json({ message: "User/Pass invalid" });
 
     return res.status(200).json(UserViewModelMapper.toHTTP(output));
   }

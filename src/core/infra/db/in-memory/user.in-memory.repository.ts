@@ -16,6 +16,10 @@ export class UserInMemoryRepository implements UserRepositoryInterface {
     return this.items.find((item) => item.id === id) || null;
   }
 
+  async filterByEmail(email: string): Promise<User | null> {
+    return this.items.find((item) => item.email === email) || null;
+  }
+
   async updateById(id: string, nickName: string): Promise<void> {
     const userIndex = this.items.findIndex((item) => item.id === id);
     if (userIndex >= 0) {
@@ -23,15 +27,15 @@ export class UserInMemoryRepository implements UserRepositoryInterface {
     }
   }
 
-  async findUserAndPassword(
-    email: string,
-    password: string
-  ): Promise<User | null> {
-    const userIndex = this.items.findIndex((item) => item.email === email);
-    if (userIndex >= 0) {
-      if (this.items[userIndex].password === password)
-        return this.items[userIndex];
-    }
-    return null;
-  }
+  // async findUserAndPassword(
+  //   email: string,
+  //   password: string
+  // ): Promise<User | null> {
+  //   const userIndex = this.items.findIndex((item) => item.email === email);
+  //   if (userIndex >= 0) {
+  //     if (this.items[userIndex].password === password)
+  //       return this.items[userIndex];
+  //   }
+  //   return null;
+  // }
 }

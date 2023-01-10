@@ -5,5 +5,4 @@ export interface TaskRepositoryInterface {
   getAll(authorId: string): Promise<Task[]>;
   filterById(authorId: string, id: string): Promise<Task | null>;
   save(task: Task): Promise<void>;
-  // updateById(id: string, nickName: string): Promise<void>;
 }
