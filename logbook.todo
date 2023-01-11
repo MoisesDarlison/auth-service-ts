@@ -1,23 +1,25 @@
                             
                             ### Projeto de casos de uso com testes ###
 ## OBS iniciado o TODO-LIST ja apos o inicio do projeto por isso alguns horarios estaram fora de ordem
-
-Users:
-    Create a new User:
-        ✔ Create repository and use case @done(23-01-06 12:47)
-            ✘ Change layout that is being saved in the database @started(23-01-06 12:17) @cancelled(23-01-06 12:38) @wasted(21m51s)
-            ✔ It has been validated that it is saving correctly in memory @done(23-01-06 12:45)
-        ✔ Create tests @done(23-01-06 12:47)
-    List all user:
-        ✔ Create tests @done(23-01-06 12:44)
-        ✔ Create repository and use case @done(23-01-06 13:12)
-    Filter user by ID:
-        ✔ Create tests @started(23-01-06 15:01) @done(23-01-06 15:25) @lasted(24m59s)
-        ✔ Create repository and use case of filter USER @started(23-01-06 15:26) @done(23-01-06 15:26) @lasted(16s)
-    Update NickName user by ID:
-        ✔ Create tests @started(23-01-09 09:48) @done(23-01-09 10:43) @lasted(55m15s)
-        ✔ Create repository and use case of filter USER @done(23-01-09 10:43)
-Tasks:
+Use Cases:
+    Users:
+        Create a new User:
+            ✔ Create repository and use case @done(23-01-06 12:47)
+                ✘ Change layout that is being saved in the database @started(23-01-06 12:17) @cancelled(23-01-06 12:38) @wasted(21m51s)
+                ✔ It has been validated that it is saving correctly in memory @done(23-01-06 12:45)
+            ✔ Create tests @done(23-01-06 12:47)
+        List all user:
+            ✔ Create tests @done(23-01-06 12:44)
+            ✔ Create repository and use case @done(23-01-06 13:12)
+        Filter user by ID:
+            ✔ Create tests @started(23-01-06 15:01) @done(23-01-06 15:25) @lasted(24m59s)
+            ✔ Create repository and use case of filter USER @started(23-01-06 15:26) @done(23-01-06 15:26) @lasted(16s)
+        Update NickName user by ID:
+            ✔ Create tests @started(23-01-09 09:48) @done(23-01-09 10:43) @lasted(55m15s)
+            ✔ Create repository and use case of filter USER @done(23-01-09 10:43)
+        Authicate Middware:
+            ✔ Create Authenticate Use Case @started(23-01-09 22:01) @done(23-01-09 22:53) @lasted(52m32s)
+    Tasks:
     Create a new Task:
         ✔ Create tests @started(23-01-09 11:50) @done(23-01-09 13:48) @lasted(1h58m47s)
         ✔ Create repository and use case @done(23-01-09 13:48)
@@ -35,3 +37,11 @@ Tasks:
         ✔ Remove tag @done(23-01-09 17:14)
         ✔ Update Title and description @started(23-01-09 17:44) @done(23-01-09 18:20) @lasted(36m2s)
 
+
+
+Features:  
+    Authentication: 
+        ✔ SingIn @started(23-01-10 10:13) @done(23-01-10 12:12) @lasted(1h59m7s)
+        ✔ Create barier Token @started(23-01-10 13:55) @done(23-01-10 15:57) @lasted(2h2m25s)
+    ☐ Validate input User @started(23-01-10 15:58)
+   

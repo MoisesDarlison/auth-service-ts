@@ -3,7 +3,7 @@ import { SECRET_KEY } from "../infra/http/middleware/authenticate.middleware";
 
 export class GenerateToken {
   static execute(id: string, email: string, role: string): string {
-    return jwt.sign({ id, email, role }, SECRET_KEY, {
+    return jwt.sign({ id, email }, SECRET_KEY, {
       expiresIn: "2 days",
     });
   }
